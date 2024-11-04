@@ -1,66 +1,363 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Redes 2024/2025
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Software necessário
 
-## About Laravel
+XAMPP (PHP, MySQL, Apache) - https://www.apachefriends.org/
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+git - https://git-scm.com/download/win
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+composer - https://getcomposer.org/download/
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+node - https://nodejs.org/en/download/current
 
-## Learning Laravel
+VS Code - https://code.visualstudio.com/
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### GIT
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+É um sistema de controlo de versões que permite colaborar e manter um histórico de alterações.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Permite: 
+- Tracking code changes
+- Tracking who made changes
+- Coding collaboration
 
-## Laravel Sponsors
+https://git-scm.com/downloads
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Como verificar se o GIT está bem instalado:
 
-### Premium Partners
+```bash
+git --version
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+#### Informação adicional
 
-## Contributing
+Recomenda-se o segiuinte tutorial:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- https://www.w3schools.com/git/
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+### PHP
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Como verificar se o PHP está bem instalado:
 
-## License
+```bash
+php -v
+``` 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+### Plugins do VS Code
+
+- PHP Intelephense
+
+  - https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client
+
+### Atalhos do VS Code
+
+
+| Ctrl + P | Procura um ficheiro pelo nome |
+| --- | --- |
+
+## Instalação 
+
+### Laravel
+
+Vamos instalar um projeto que iremos chamar ```redes2024```. Note que o nome do projeto é o nome da pasta que será criada e deverá estar relacionado com o nome do seu projeto. 
+
+```bash
+composer create-project laravel/laravel redes2024t1
+```
+
+### Jetstream
+
+De seguida deverá entrar na pasta do projeto:
+
+```cd redes2024t1```
+
+Já dentro da pasta `redes2024t1` deverá executar o seguinte comando:
+
+```bash
+composer require laravel/jetstream
+```
+
+Iremos utilizar o jetstream com o ```livewire```. Para isso deverá executar o seguinte comando:
+
+```bash
+php artisan jetstream:install livewire
+```
+
+Neste momento não precisa de se preocupar sobre o que é o Livewire. 
+
+### Finalização da instalação 
+
+```bash
+npm install
+npm run build
+```
+
+### Configuração da base de dados
+
+Para que o laravel use a base de dados correta, deverá alterar o ficheiro ```.env``` que se encontra na raiz do projeto e modificar a seguinte linha para o nome da base de dados. Deverá usar o nome adequado ao seu projeto.
+
+Neste caso, como vamos usar ```mysql``` em vez de ```sqlite```, faremos as seguintes alterações no ficheiro:
+
+```bash
+#DB_CONNECTION=sqlite
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nodjintis
+DB_USERNAME=root
+DB_PASSWORD=
+
+```
+
+Nas últimas versões do Laravel, caso a base de dados não exista, o Laravel irá criá-la.
+
+Finalmente, deverá executar as migrações:
+
+```bash
+php artisan migrate
+```
+
+# Execução
+
+## XAMPP 
+
+Ligar o Apache e o MySQL.
+
+## Iniciar o servidor
+
+Como estamos a usar o ```MySQL``` teremos que ter o servidor a funcionar. Para o nosso caso, terá que estar em execução no XAMPP (ou LAMPP se tiver em Linux).
+
+Depois deverá ter executar na raíz da pasta do projecto:
+
+```bash
+php artisan serve
+```
+
+Para verificar se está tudo funcional, poderá, a partir do seu browser favorito, abrir o endereço retornado pelo comando anterior. Normalmente será 127.0.0.1 (localhost) e porta 8000:
+
+```
+localhost:8000
+```
+
+
+
+
+
+## Criação de componente 
+
+Pode criar componentes para reutilizar. Por exemplo, as hiperligações de um menu:
+
+```bash
+php artisan make:component navlink
+```
+
+Poderá utilizar o componente recorrendo a:
+
+```php
+<x-navlink href="about">Acerca</x-navlinkg>
+```
+
+Caso deseje passar parâmetros poderá usar:
+
+```html
+<a class="text-blue-600" href="http://localhost:8000/{{ $href }}">{{ $slot }}</a>
+```
+
+
+## Criação de um modelo 
+
+Para implementar o modelo visto nas aulas ```Organization``` deverá utilizar o comando:
+
+```bash
+php artisan make:model Organization
+```
+
+No entanto, como vimos, vamos criar sempre uma migração (m), factory (f), Seeder (s), e controlador. Pelo que podemos usar a opção ```-mfcs```.
+
+```bash
+php artisan make:model Organization -mcfs
+```
+
+# Trabalho
+
+Cada aluno contribuíra com uma parte do site. Os trabalhos atribuídos são:
+
+
+# Semana de 9 outubro
+
+**Objetivos:**
+
+- Criação do modelo, migração, controler, seeder e factory para ```Category```;
+
+- Modificação da tabela da base de dados ```categories```;
+
+- Preenchimento da tabela ```categories`` através do seeder ```CategorySeeder```; 
+
+- Criação do "routing" para a vista de listagem de categorias;
+
+- Criação da vista para a listagem das categorias.
+
+## Criação do modelo, migração, seeder e factory para ```Category```
+
+Para criar o modelo ```Category``` assim como a migração (m), controller (c), seeder (s) e factory (f) deverá executar na linha de comandos (dentro da pasta raíz do projeto):
+
+```
+php artisan make:model Category -mcfs
+```
+
+Serão criados vários ficheiros. [Quais? Repare no nome dos ficheiros, principalmente no facto de estarem no singular ou plural.]
+
+## Modificação da tabela da base de dados
+
+Deverá editar o ficheiro que se encontra dentro da pasta ```database/migrations/``` e que terá um nome semelhante a ```2024_10_09_130553_create_categories_table.php```.
+
+Para ser mais fácil encontrar o ficheiro, caso esteja a utilizar o Visual Studio Code, poderá procurá-lo fazendo ```Ctrl+P``` e escrever parte do nome, por exemplo ```migra catego```.
+
+Para o nosso caso, vamos querer que a tabela guarde as seguintes informações:
+
+- name: String com o nome da categoria;
+
+- slug: Identificador **único** (em string); [Qual a vantagem de usar um slug em vez do ID?]
+
+- description: Descrição *(opcional)* do que representa a categoria;
+
+- image: String que terá o endereço da imagem da categoria *(opcional)*.
+
+Para isso deverá alterar a função ```public function up(): void```php:
+
+```php
+Schema::create('categories', function (Blueprint $table) {
+    $table->id();
+    $table->string('name');
+    $table->string('slug')->unique();
+    $table->text('description')->nullable();
+    $table->string('image')->nullable();
+    $table->timestamps();
+});
+```
+
+## Preenchimento da tabela categories através do seeder CategorySeeder
+
+Deverá modificar o ficheiro que se encontra na pasta ```database/seeders/``` com o nome ```CategorySeeder.php```, inserindo dentro da função ```public function run()```:
+
+```php
+  Category::create([
+      'name' => 'Manuais',
+      'slug' => 'manuais',  
+      'image' => 'manuais.jpg'          
+  ]);
+
+  Category::create([
+      'name' => 'Cidadania e Desenvolvimento',
+      'slug' => 'ced',
+      'description' => 'Nesta categoria poderá encontrar informações sobre os domínios da área curricular de Cidadania e Desenvolvimento'            
+  ]);
+
+  Category::create([
+      'name' => 'Programação e Sistemas de Informação',
+      'slug' => 'psi',            
+  ]);
+
+  Category::create([
+      'name' => 'Redes de Comunicação',
+      'slug' => 'rc',            
+  ]);
+```
+
+Para que as informações passem do Seeder para a BD, teremos que o executar:
+
+```bash
+php artisan db:seed --class=CategorySeeder
+```
+
+Note que se executar duas vezes consecutivas o Seeder, teremos erros, porque pedimos que o slug não possa ser "repetido". Uma solução poderá passar por no início do Seeder, dentro da função ```public function run()``` a linha:
+
+**Nota importante:** Esta linha apagará todos os dados que já estão na BD.
+
+## Criação do "routing" para a vista de listagem de categorias
+
+Queremos agora que o utilizador ao chegar ao endereço ```http://localhost:8000/categories``` encontre a listagem de todas as categorias.
+
+Para isso vamos acrescentar uma rota ao ficheiro ```web.php``` que se encontra na pasta ```routes```. Vamos também colocar na variável ```$categories``` todo o conteúdo que está na tabela ```categories```através de ```Category::all()```. Não se esqueça de colocar ```use App\Models\Category``` no início do ficheiro ```web.php```.
+
+```php
+Route::get('/categories', function () {
+    $categories = Category::all();    
+    return view('categories.index', compact('categories'));
+});
+```
+
+# Utilização de "modelos"
+
+Usar como base
+<x-guestLayout>
+    ...
+
+    <h1>Página da Escola</h1>
+
+    A melhor página da Internet!
+
+    ...
+</x-guestLayout>
+
+
+
+# Criação e validação de um formulário
+
+Cross-site request forgery
+
+# Forking
+
+- Ir ao projeto: (no Github)
+- No canto superior direito clicar em Fork
+- Por baixo de "owner" escolher o nosso utilizador
+- Selecionar o "Copy the default branch"
+- Clicar em Create Fork.
+
+## Clonar o fork
+
+- Na pasta onde quer instalar o projeto executar:
+``` bash
+git clone https://github.com/YOUR-USERNAME/rc_aeg1
+```
+- cd rc_aeg1
+- Executar ```composer update```
+- Executar ```npm install```
+- Criar uma nova *branch* com o nome do modelo que te foi atribuído (em vez de BRANCH-NAME):
+```bash
+git branch BRANCH-NAME
+git checkout BRANCH-NAME
+```
+
+---
+
+https://github.com/<your_username>/rc_aeg1. You'll see a banner indicating that your branch is one commit ahead of dvdfreitas:main. Click Contribute and then Open a pull request.
+
+
+GitHub will bring you to a page that shows the differences between your fork and the dvdfreitas/rc_aeg1 repository. Click Create pull request.
+
+
+- git remote -v
+- git remote add upstream https://github.com/ORIGINAL_OWNER/rc_aeg1
+- git remote -v
+
+
+Mais informações em:
+https://docs.github.com/en/get-started/quickstart/contributing-to-projects
+
+# Tutoriais
+
+## Markdown
+
+https://www.markdownguide.org/cheat-sheet/
+
+# Erros
+
+## SQLSTATE[HY000] [2002] Connection refused
+## SQLSTATE[HY000] [1049] Unknown database 'rc11'
+## SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rc11.sessions' doesn't exist
+## Add [id] to fillable property to allow mass assignment on [App\Models\Student]
