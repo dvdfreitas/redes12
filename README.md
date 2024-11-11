@@ -349,6 +349,32 @@ GitHub will bring you to a page that shows the differences between your fork and
 Mais informações em:
 https://docs.github.com/en/get-started/quickstart/contributing-to-projects
 
+# Avaliação
+
+## Criação do repositório
+
+Para a avaliação dos trabalhos, cada aluno ou grupo, deverá ter o seu projeto disponibilizado no Github.
+
+Para isso deverá:
+
+1 - Ter uma conta no https://github.com/
+
+2 - Em ```Repositories``` fazer ```New```, para criar um repositório.
+
+3 - Dar nome ao repositório, preencher os campos necessários e fazer ```Create repository```.
+
+4 - Preencher no ficheiro partilhado para o efeito, a hiperligação para o vosso projeto.
+
+## Atualização do repositório
+
+Deverá, na raíz do projecto:
+
+```
+git add .
+git commit -m "Nome da alteração"
+git push
+```
+
 # Tutoriais
 
 ## Markdown
