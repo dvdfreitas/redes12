@@ -182,24 +182,7 @@ No entanto, como vimos, vamos criar sempre uma migração (m), factory (f), Seed
 php artisan make:model Organization -mcfs
 ```
 
-# Trabalho
-
-Cada aluno contribuíra com uma parte do site. Os trabalhos atribuídos são:
-
-
-# Semana de 9 outubro
-
-**Objetivos:**
-
-- Criação do modelo, migração, controler, seeder e factory para ```Category```;
-
-- Modificação da tabela da base de dados ```categories```;
-
-- Preenchimento da tabela ```categories`` através do seeder ```CategorySeeder```; 
-
-- Criação do "routing" para a vista de listagem de categorias;
-
-- Criação da vista para a listagem das categorias.
+# Criação, listagem e Inserção de Categorias
 
 ## Criação do modelo, migração, seeder e factory para ```Category```
 
@@ -232,7 +215,7 @@ Para isso deverá alterar a função ```public function up(): void```php:
 ```php
 Schema::create('categories', function (Blueprint $table) {
     $table->id();
-    $table->string('name');
+    $table->string('name')->unique();
     $table->string('slug')->unique();
     $table->text('description')->nullable();
     $table->string('image')->nullable();
@@ -291,6 +274,65 @@ Route::get('/categories', function () {
 });
 ```
 
+Deverá ainda criar um ficheiro ```index.blade.php``` na pasta ```resources\views\categories```. Um possível conteúdo poderá ser:
+
+```html
+<x-guestLayout>
+    Index das categorias
+    
+    @foreach ($categories as $category)
+        <div class="border p-2 rounded">{{ $category->name }}</div>
+    @endforeach
+
+    <a class="hover:underline text-blue-500" href="/categories/create">Criar nova categoria<a>
+</x-guestLayout>
+```
+
+# Criação do "routing" para a criação de categorias
+
+```php
+Route::get('/categories/create', function () {
+    return view('categories.create', compact('categories'));
+});
+```
+
+Deverá ainda criar um ficheiro ```create.blade.php``` na pasta ```resources\views\categories```. Um possível conteúdo poderá ser:
+
+```html
+<x-guestLayout>
+    <form action="/categories/store" method="POST">
+        @csrf
+        Nome: <input type="text" name="name"><br>
+        Slug: <input type="text" name="slug"><br>
+        Image: <input type="text" name="image"><br>
+        Descrição: <textarea name="description"></textarea>
+        <x-button>Criar</x-button>
+    </form>
+</x-guestLayout>
+```
+
+Note-se que deverá ter a linha ```@csrf``` depois do form (ver Cross-side referency forgery) e que o método do formulário é ```POST```.
+
+# Criação do "routing" para a gravação da categoria
+
+Para gravar na base de dados poderá usar (isto vai ser reformulado na próxima aula, acrescentando validação e redirecionamento).
+
+```php
+Route::post('/categories/store', function (Request $request) {
+    Category::create([
+        'name' => $request->input('name'),
+        'slug' => $request->input('slug'),
+        'description' => $request->input('description'),
+        'image' => $request->input('image'),
+    ]);
+});
+```
+
+
+## Cross-site request forgery
+
+
+
 # Utilização de "modelos"
 
 Usar como base
@@ -306,9 +348,7 @@ Usar como base
 
 
 
-# Criação e validação de um formulário
 
-## Cross-site request forgery
 
 
 
