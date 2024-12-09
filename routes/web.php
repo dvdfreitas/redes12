@@ -14,14 +14,13 @@ Route::get('/categories', function () {
 });
 
 Route::post('/categories/store', function (Request $request) {
+    
     Category::create([
         'name' => $request->input('name'),
         'slug' => $request->input('slug'),
         'description' => $request->input('description'),
         'image' => $request->input('image'),
     ]);
-
-    //return view('categories.create');
 });
 
 Route::get('/categories/create', function () {

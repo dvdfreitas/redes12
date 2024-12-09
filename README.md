@@ -327,10 +327,32 @@ Route::post('/categories/store', function (Request $request) {
     ]);
 });
 ```
+Para evitar o "mass assignment", deverá acrescentar em ```Category.php:```
+
+```php
+class Category extends Model
+{
+    /** @use HasFactory<\Database\Factories\CategoryFactory> */
+    use HasFactory;
+
+    protected $guarded = [];
+}
+```
+
+Esta não é a forma ideal. Seria preferível usar:
+
+```
+protected $fillable = [];
+
+```
+em que são colocados no vector o nome dos campos que são possível alterar.
 
 
 ## Cross-site request forgery
 
+## Mass assignment vulnerability
+
+A mass assignment vulnerability occurs when a user passes an unexpected HTTP request field and that field changes a column in your database that you did not expect. For example, a malicious user might send an is_admin parameter through an HTTP request, which is then passed to your model's create method, allowing the user to escalate themselves to an administrator.
 
 
 # Utilização de "modelos"
