@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,6 +11,17 @@ Route::get('/', function () {
 Route::get('/categories', function () {
     $categories = Category::all();
     return view('categories.index', compact('categories'));
+});
+
+Route::post('/categories/store', function (Request $request) {
+    Category::create([
+        'name' => $request->input('name'),
+        'slug' => $request->input('slug'),
+        'description' => $request->input('description'),
+        'image' => $request->input('image'),
+    ]);
+
+    //return view('categories.create');
 });
 
 Route::get('/categories/create', function () {
