@@ -292,7 +292,7 @@ Deverá ainda criar um ficheiro ```index.blade.php``` na pasta ```resources\view
 
 ```php
 Route::get('/categories/create', function () {
-    return view('categories.create', compact('categories'));
+    return view('categories.create');
 });
 ```
 

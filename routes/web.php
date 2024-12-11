@@ -20,10 +20,9 @@ Route::get('/categories/create', function () {
 Route::post('/categories/store', function (Request $request) {
     
     $validated = $request->validate([
-        'name' => 'required|min:3',        
+        'name' => 'required',
         'slug' => 'required',
-        'image' => 'image',
-        'description' => 'min:3'
+        'description' => 'min:4'                       
     ]);
 
     Category::create([
