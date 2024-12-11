@@ -13,8 +13,19 @@ Route::get('/categories', function () {
     return view('categories.index', compact('categories'));
 });
 
+Route::get('/categories/create', function () {
+    return view('categories.create');
+});
+
 Route::post('/categories/store', function (Request $request) {
     
+    $validated = $request->validate([
+        'name' => 'required|min:3',        
+        'slug' => 'required',
+        'image' => 'image',
+        'description' => 'min:3'
+    ]);
+
     Category::create([
         'name' => $request->input('name'),
         'slug' => $request->input('slug'),
@@ -23,9 +34,7 @@ Route::post('/categories/store', function (Request $request) {
     ]);
 });
 
-Route::get('/categories/create', function () {
-    return view('categories.create');
-});
+
 
 
 Route::middleware([
