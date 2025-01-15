@@ -464,7 +464,21 @@ git push
 
 ## Verificação de Email
 
-Modificar o ficheiro ```User.php``` em ```app\Models``` acrescentando: ```class User extends Authenticatable implements MustVerifyEmail```
+Modificar o ficheiro ```User.php``` em ```app\Models``` acrescentando ```implements MustVerifyEmail```:
+
+```php
+class User extends Authenticatable 
+{
+    ...
+}
+```
+
+```php
+class User extends Authenticatable implements MustVerifyEmail
+{
+    ...
+}
+```
 
 Como estamos a usar JetStream, retirar o comentário da linha do ficheiro ```fortify.php``` da pasta ```config```:
 
@@ -476,11 +490,13 @@ Será útil criar uma conta em: https://mailtrap.io/
 
 Configurar o ficheiro ```.env``` através da informação em: https://mailtrap.io/inboxes, usando a opção Action -> Setting -> Php -> Laravel 9+
 
+```bash
 MAIL_MAILER=smtp
 MAIL_HOST=sandbox.smtp.mailtrap.io
 MAIL_PORT=2525
 MAIL_USERNAME=*********
 MAIL_PASSWORD=*********
+```
 
 Note que os asteríscos deverão ser substituídos pelos valores corretos.
 
