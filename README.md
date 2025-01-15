@@ -466,7 +466,7 @@ git push
 
 Modificar o ficheiro ```User.php``` em ```app\Models``` acrescentando: ```class User extends Authenticatable implements MustVerifyEmail```
 
-Como estamos a usar JetStream, retirar o comentário da linha:
+Como estamos a usar JetStream, retirar o comentário da linha do ficheiro ```fortify.php``` da pasta ```config```:
 
 ```
 //Features::emailVerification(),
