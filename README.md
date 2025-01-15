@@ -462,6 +462,28 @@ git commit -m "Nome da alteração"
 git push
 ```
 
+## Verificação de Email
+
+Modificar o ficheiro ```User.php``` em ```app\Models``` acrescentando: ```class User extends Authenticatable implements MustVerifyEmail```
+
+Como estamos a usar JetStream, retirar o comentário da linha:
+
+```
+//Features::emailVerification(),
+```
+
+Será útil criar uma conta em: https://mailtrap.io/
+
+Configurar o ficheiro ```.env``` através da informação em: https://mailtrap.io/inboxes, usando a opção Action -> Setting -> Php -> Laravel 9+
+
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=*********
+MAIL_PASSWORD=*********
+
+Note que os asteríscos deverão ser substituídos pelos valores corretos.
+
 # Tutoriais
 
 ## Markdown
@@ -474,3 +496,4 @@ https://www.markdownguide.org/cheat-sheet/
 ## SQLSTATE[HY000] [1049] Unknown database 'rc11'
 ## SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rc11.sessions' doesn't exist
 ## Add [id] to fillable property to allow mass assignment on [App\Models\Student]
+

@@ -8,6 +8,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/css', function () {
+    return view('css');
+});
+
 Route::get('/categories', function () {
     $categories = Category::all();
     return view('categories.index', compact('categories'));
