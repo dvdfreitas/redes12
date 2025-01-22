@@ -21,7 +21,7 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'name' => 'Vídeo',
-            'slug' => 'video',            
+            'slug' => 'video',     
         ]);
     }
 }

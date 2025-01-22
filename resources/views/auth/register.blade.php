@@ -14,6 +14,12 @@
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 
+            <div class="flex">
+                <x-label for="type" value="{{ __('Type') }}" />
+                <input id="type" class="block mt-1" type="radio" name="type" :value="old('type')" required autofocus autocomplete="type" />Atleta
+                <input id="type" class="block mt-1" type="radio" name="type" :value="old('type')" required autofocus autocomplete="type" />Guia
+            </div>
+
             <div class="mt-4">
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
