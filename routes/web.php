@@ -1,12 +1,18 @@
 <?php
 
 use App\Models\Category;
+use App\Models\Story;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/', function () {    
     return view('welcome');
 });
+
+Route::get('/stories', function () {
+    $stories = Story::with('categories')->get();    
+    return view('stories.index', compact('stories'));
+ });
 
 Route::get('/css', function () {
     return view('css');
@@ -36,9 +42,6 @@ Route::post('/categories/store', function (Request $request) {
         'image' => $request->input('image'),
     ]);
 });
-
-
-
 
 Route::middleware([
     'auth:sanctum',
