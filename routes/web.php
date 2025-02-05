@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Category;
+use App\Models\Race;
 use App\Models\Story;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +14,30 @@ Route::get('/stories', function () {
     $stories = Story::with('categories')->get();    
     return view('stories.index', compact('stories'));
  });
+
+Route::get('/races', function () {    
+    return view('races.index');
+});
+
+
+Route::get('/races/create', function () {    
+    return view('races.create');
+});
+
+Route::post('/races/store', function (Request $request) {
+    
+    $validated = $request->validate([
+        'name' => 'required',
+        'date' => 'required|date',
+        'place' => 'required',
+        'distance' => 'required|numeric',        
+        'description' => 'min:4'
+    ]);
+
+    Race::create($validated);
+})->name('races.store');
+
+
 
 Route::get('/css', function () {
     return view('css');

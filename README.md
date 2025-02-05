@@ -500,6 +500,40 @@ MAIL_PASSWORD=*********
 
 Note que os asteríscos deverão ser substituídos pelos valores corretos.
 
+# Redirecionamento
+
+```php
+return redirect()->route('races.create')->banner('Race created with success');
+```
+
+# Fazer o login "automático" de um utilizador
+
+```php
+Auth::loginusingid(1);
+```
+
+# Accessors
+
+```php
+protected function getDateAttribute($date)
+{
+    return Carbon::parse($date)->format('d-m-y');
+}
+
+protected function getTimeAttribute($date)
+{
+    return Carbon::parse($date)->format('H:i');
+}    
+
+protected function getDistanceAttribute($distance)
+{
+    if ($distance >= 1000) 
+        return ($distance / 1000) . " km";
+    else 
+        return $distance . " m";
+} 
+```   
+
 # Tutoriais
 
 ## Markdown

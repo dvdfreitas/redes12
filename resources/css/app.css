@@ -5,3 +5,9 @@
 [x-cloak] {
     display: none;
 }
+
+@layer components {
+    h1 {
+        @apply text-4xl;
+    }
+}
